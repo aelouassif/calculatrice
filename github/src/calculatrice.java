@@ -1,3 +1,6 @@
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -61,6 +64,9 @@ class maFenetre extends JFrame
 					case 22:
 						monButton = new button("+",monEcrant);
 						break;
+					case 24:
+						monButton = new button("=",monEcrant);
+						break;
 					default:
 						monButton = new button("",monEcrant);
 						break;
@@ -82,7 +88,7 @@ class button extends JButton implements ActionListener
 		this.addActionListener(this);
 		this.monEcrant = e;
 	}
-	public void actionPerformed(ActionEvent ev)
+	public void actionPerformed(ActionEvent ev) 
 	{
 		String touch = ev.getActionCommand();
 		
@@ -171,9 +177,31 @@ class button extends JButton implements ActionListener
 			System.out.println(ev.getActionCommand());
 			monEcrant.setText(resultat+=")");
 		}
-		
-		
+		else if(touch.equals(")"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+=")");
+		}
+		else if(touch.equals("="))
+		{
+			System.out.println(ev.getActionCommand());
+//			calculer(resultat);
+			try {calculer(resultat);} catch(ScriptException ex){};
+			monEcrant.setText(resultat);
+			resultat = "";
+		}
 
+	}
+	public static void calculer(String mot)throws ScriptException {
+		ScriptEngineManager manager = new ScriptEngineManager();
+		ScriptEngine engine = manager.getEngineByName("JavaScript");
+		Object result = "";
+	    result = engine.eval(mot);
+	    resultat = result.toString();
+	    System.out.print(resultat);
+//	    monEcrant.setText(resultat); //si j'essai ici de modifier l'ecant il donne une erreur a l'execution
+	    return ;
+	    
 	}
 	public static String resultat = "";
 	private ecrant monEcrant;
