@@ -23,46 +23,46 @@ class maFenetre extends JFrame
 		for(int i=1;i<=24;i++)
 		{
 			if(i<=18 && 1<=(i%6) && (i%6)<=3 )
-				monButton = new button(""+(i%6+3*(i/6)));
+				monButton = new button(""+(i%6+3*(i/6)),monEcrant);
 			else
 			{
 				switch(i)
 				{
 					case 4:
-						monButton = new button("÷");
+						monButton = new button("÷",monEcrant);
 						break;
 					case 10:
-						monButton = new button("*");
+						monButton = new button("*",monEcrant);
 						break;
 					case 11:
-						monButton = new button("(");
+						monButton = new button("(",monEcrant);
 						break;
 					case 12:
-						monButton = new button(")");
+						monButton = new button(")",monEcrant);
 						break;
 					case 16:
-						monButton = new button("-");
+						monButton = new button("-",monEcrant);
 						break;
 					case 17:
-						monButton = new button("x²");
+						monButton = new button("x²",monEcrant);
 						break;
 					case 18:
-						monButton = new button("√");
+						monButton = new button("√",monEcrant);
 						break;
 					case 19:
-						monButton = new button("0");
+						monButton = new button("0",monEcrant);
 						break;
 					case 20:
-						monButton = new button(".");
+						monButton = new button(".",monEcrant);
 						break;
 					case 21:
-						monButton = new button("%");
+						monButton = new button("%",monEcrant);
 						break;
 					case 22:
-						monButton = new button("+");
+						monButton = new button("+",monEcrant);
 						break;
 					default:
-						monButton = new button("");
+						monButton = new button("",monEcrant);
 						break;
 				
 				}
@@ -75,16 +75,108 @@ class maFenetre extends JFrame
 }
 class button extends JButton implements ActionListener
 {
-	button(String mot)
+	button(String mot,ecrant e)
 	{
 		super(mot);
 		this.setPreferredSize(new Dimension(50,40));
 		this.addActionListener(this);
+		this.monEcrant = e;
 	}
 	public void actionPerformed(ActionEvent ev)
 	{
-		System.out.println(ev.getActionCommand());
+		String touch = ev.getActionCommand();
+		
+		if(touch.equals("1"))
+		{
+				System.out.println(ev.getActionCommand());
+				monEcrant.setText(resultat+="1");
+		}
+		else if(touch.equals("2"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="2");
+		}
+		else if(touch.equals("3"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="3");
+		}
+		else if(touch.equals("4"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="4");
+		}
+		else if(touch.equals("5"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="5");
+		}
+		else if(touch.equals("6"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="6");
+		}
+		else if(touch.equals("7"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="7");
+		}
+		else if(touch.equals("8"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="8");
+		}
+		else if(touch.equals("9"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="9");
+		}
+		else if(touch.equals("0"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="0");
+		}
+		else if(touch.equals("."))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+=".");
+		}
+		else if(touch.equals("+"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="+");
+		}
+		else if(touch.equals("-"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="-");
+		}
+		else if(touch.equals("*"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="*");
+		}
+		else if(touch.equals("÷"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="/");
+		}
+		else if(touch.equals("("))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+="(");
+		}
+		else if(touch.equals(")"))
+		{
+			System.out.println(ev.getActionCommand());
+			monEcrant.setText(resultat+=")");
+		}
+		
+		
+
 	}
+	public static String resultat = "";
+	private ecrant monEcrant;
 }
 
 class ecrant extends JTextField
